@@ -1,0 +1,36 @@
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  flex: 0 0 19%;
+  text-align: center;
+  margin: 0 4px;
+  transition: transform 300ms ease 100ms;
+
+  .footer {
+    background: rgba(green, 0.6);
+    width: 100%;
+  }
+
+  p {
+    color: white;
+    font-size: 1.2rem;
+    margin: 10px;
+    font-weight: 600;
+  }
+
+  /* &:hover .item {
+    transform: translateX(-10%);
+  } */
+
+  &:hover ~ .item {
+    transform: translateX(10%);
+  }
+
+  &:hover {
+    transform: scale(1.2) !important;
+  }
+}

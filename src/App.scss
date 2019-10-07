@@ -1,0 +1,55 @@
+.container {
+  padding: 0 5rem;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+.container-section {
+  position: relative;
+  display: flex;
+  margin-bottom: 5rem;
+  transition: transform 0.8s ease-in;
+
+  &:hover {
+    .prevArrow,
+    .nextArrow {
+      display: block;
+    }
+  }
+}
+
+.section-title {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.prevArrow {
+  position: absolute;
+  display: none;
+  top: 30%;
+  left: -3%;
+  z-index: 1;
+
+  img {
+    width: 20%;
+  }
+}
+
+.nextArrow {
+  position: absolute;
+  display: none;
+  top: 30%;
+  right: -12%;
+  z-index: 1;
+
+  img {
+    width: 20%;
+  }
+}
