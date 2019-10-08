@@ -1,5 +1,6 @@
 .container {
   padding: 0 5rem;
+  overflow: hidden;
 }
 
 h1 {
@@ -12,16 +13,12 @@ a {
 }
 
 .container-section {
-  position: relative;
   display: flex;
   margin-bottom: 5rem;
   transition: transform 0.8s ease-in;
 
-  &:hover {
-    .prevArrow,
-    .nextArrow {
-      display: block;
-    }
+  &:hover .item {
+    transform: translateX(-10%);
   }
 }
 
@@ -30,10 +27,14 @@ a {
   margin: 20px 0;
 }
 
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+
 .prevArrow {
   position: absolute;
-  display: none;
-  top: 30%;
+  top: 35%;
   left: -3%;
   z-index: 1;
 
@@ -44,11 +45,9 @@ a {
 
 .nextArrow {
   position: absolute;
-  display: none;
-  top: 30%;
-  right: -12%;
+  top: 35%;
+  right: -15%;
   z-index: 1;
-
   img {
     width: 20%;
   }
