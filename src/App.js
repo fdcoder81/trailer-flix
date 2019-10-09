@@ -4,6 +4,7 @@ import nextArrow from "./images/next.png";
 import prevArrow from "./images/prev.png";
 
 import MovieItem from "./MovieItem";
+import Content from "./Content";
 import { getMoviesNow, getTvSeries, getMoviesByGenre } from "./api/getData";
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
     tvSeries: [],
     actionMovies: [],
     animation: [],
+    contentMovie: [],
     translate: 0
   };
 
@@ -30,6 +32,10 @@ class App extends React.Component {
     this.setState({ moviesNow });
     this.setState({ tvSeries });
     this.setState({ animation });
+  };
+
+  openContent = contentMovie => {
+    this.setState({ contentMovie });
   };
 
   handleNext = ref => e => {
@@ -65,6 +71,8 @@ class App extends React.Component {
       <div className="container">
         <h1>Trailer Flix</h1>
 
+        <Content movie={this.state.contentMovie} />
+
         <h1 className="section-title">Now playing</h1>
         <div className="wrapper">
           <div
@@ -80,7 +88,10 @@ class App extends React.Component {
             <img src={nextArrow} alt="" />
           </div>
           <div ref={this.moviesNowSection} className="container-section">
-            <MovieItem movies={this.state.moviesNow} />
+            <MovieItem
+              movies={this.state.moviesNow}
+              openContent={this.openContent}
+            />
           </div>
         </div>
 

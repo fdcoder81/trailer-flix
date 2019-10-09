@@ -4,7 +4,7 @@ import "./MovieItem.scss";
 
 const image_url = "https://image.tmdb.org/t/p/w500";
 
-const MovieItem = ({ movies }) => {
+const MovieItem = ({ movies, openContent }) => {
   let title = "";
   if (movies.length) {
     movies[0].original_title === undefined
@@ -16,6 +16,7 @@ const MovieItem = ({ movies }) => {
     ? movies.map(movie => {
         return (
           <div
+            onClick={() => openContent(movie)}
             key={movie.id}
             className="item"
             style={{
