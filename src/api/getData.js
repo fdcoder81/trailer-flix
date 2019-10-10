@@ -23,3 +23,13 @@ export const getMoviesByGenre = async id => {
   const data = await response.json();
   return data.results;
 };
+
+export const getMovieID = async id => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}&language=en-US`
+  );
+  const data = await response.json();
+   if(data.status_code !== 34) {
+    return data.results[0].key;
+   } else return null;
+};

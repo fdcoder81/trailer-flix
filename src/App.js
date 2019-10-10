@@ -5,7 +5,7 @@ import prevArrow from "./images/prev.png";
 
 import MovieItem from "./MovieItem";
 import Content from "./Content";
-import { getMoviesNow, getTvSeries, getMoviesByGenre } from "./api/getData";
+import { getMoviesNow, getTvSeries, getMoviesByGenre, getMovieID } from "./api/getData";
 
 class App extends React.Component {
   state = {
@@ -14,6 +14,7 @@ class App extends React.Component {
     actionMovies: [],
     animation: [],
     contentMovie: [],
+    movieTrailerID: '',
     translate: 0
   };
 
@@ -34,8 +35,9 @@ class App extends React.Component {
     this.setState({ animation });
   };
 
-  openContent = contentMovie => {
-    this.setState({ contentMovie });
+  openContent = async contentMovie => {
+    const movieTrailerID = await getMovieID(contentMovie.id);
+    this.setState({ contentMovie , movieTrailerID });
   };
 
   handleNext = ref => e => {
@@ -71,7 +73,7 @@ class App extends React.Component {
       <div className="container">
         <h1>Trailer Flix</h1>
 
-        <Content movie={this.state.contentMovie} />
+        <Content movie={this.state.contentMovie} id={this.state.movieTrailerID} />
 
         <h1 className="section-title">Now playing</h1>
         <div className="wrapper">
@@ -110,7 +112,7 @@ class App extends React.Component {
             <img src={nextArrow} alt="" />
           </div>
           <div ref={this.tvSeriesSection} className="container-section">
-            <MovieItem movies={this.state.tvSeries} />
+            <MovieItem movies={this.state.tvSeries} openContent={this.openContent}/>
           </div>
         </div>
 
@@ -129,7 +131,7 @@ class App extends React.Component {
           </div>
           <h1 className="section-title">Children & Family</h1>
           <div ref={this.animationSection} className="container-section">
-            <MovieItem movies={this.state.animation} />
+            <MovieItem movies={this.state.animation} openContent={this.openContent} />
           </div>
         </div>
 
@@ -148,7 +150,7 @@ class App extends React.Component {
           </div>
           <h1 className="section-title">Action Movies</h1>
           <div ref={this.actionMovieSection} className="container-section">
-            <MovieItem movies={this.state.actionMovies} />
+            <MovieItem movies={this.state.actionMovies} openContent={this.openContent} />
           </div>
         </div>
       </div>

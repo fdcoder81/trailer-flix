@@ -1,4 +1,5 @@
 .modal {
+  background: black;
   position: fixed;
   top: 25%;
   left: 15%;
@@ -12,53 +13,25 @@
 }
 
 .content {
+  display: flex;
   margin-top: 40px;
   height: 500px;
-  position: relative;
 }
 
-.background {
-  display: flex;
-  height: 100%;
+.trailer {
+  flex-grow: 2;
 }
 
-.left {
-  background: black;
-  width: 30%;
-  position: relative;
-}
-
-.left:before {
-  content: "";
-  position: absolute;
-
-  background-image: linear-gradient(to right, #000, transparent);
-  top: 0;
-  bottom: 0;
-  left: 100%;
-  width: 275px;
-}
-
-.right {
-  width: 70%;
-  background-size: cover;
-  background-position: center;
-}
-
-.content-container {
+.details {
   color: white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    width: 400px;
   }
 
   p {
@@ -66,3 +39,4 @@
     font-size: 1.4rem;
   }
 }
+
