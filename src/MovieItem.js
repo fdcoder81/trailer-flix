@@ -2,6 +2,7 @@ import React from "react";
 
 import "./MovieItem.scss";
 
+
 const image_url = "https://image.tmdb.org/t/p/w500";
 
 const MovieItem = ({ movies, openContent }) => {

@@ -11,33 +11,39 @@ class App extends React.Component {
   state = {
     moviesNow: [],
     tvSeries: [],
-    actionMovies: [],
+    horrorMovies: [],
     animation: [],
     contentMovie: [],
     movieTrailerID: '',
-    translate: 0
+    translate: 0,
+    showModal : false
   };
 
   moviesNowSection = React.createRef();
   tvSeriesSection = React.createRef();
-  actionMovieSection = React.createRef();
+  horrorMovieSection = React.createRef();
   animationSection = React.createRef();
 
   componentDidMount = async () => {
     const moviesNow = await getMoviesNow();
     const tvSeries = await getTvSeries();
-    const actionMovies = await getMoviesByGenre(28);
+    const horrorMovies = await getMoviesByGenre(27);
     const animation = await getMoviesByGenre(16);
 
-    this.setState({ actionMovies });
+    this.setState({ horrorMovies });
     this.setState({ moviesNow });
     this.setState({ tvSeries });
     this.setState({ animation });
   };
 
+  toggleModal = () => {
+    this.setState(prevState => ({showModal : !prevState.showModal}))
+  }
+
   openContent = async contentMovie => {
     const movieTrailerID = await getMovieID(contentMovie.id);
     this.setState({ contentMovie , movieTrailerID });
+    this.toggleModal();
   };
 
   handleNext = ref => e => {
@@ -50,7 +56,7 @@ class App extends React.Component {
     if (!ref.current.style.transform.includes("300")) {
       this.setState(
         prevState => ({ translate: prevState.translate - 100 }),
-        () => {
+        () => { 
           ref.current.style.transform = `translateX(${this.state.translate}%)`;
         }
       );
@@ -72,8 +78,10 @@ class App extends React.Component {
     return (
       <div className="container">
         <h1>Trailer Flix</h1>
+        {
+          this.state.showModal ? <Content movie={this.state.contentMovie} id={this.state.movieTrailerID} toggleModal={this.toggleModal} /> : null
 
-        <Content movie={this.state.contentMovie} id={this.state.movieTrailerID} />
+        }
 
         <h1 className="section-title">Now playing</h1>
         <div className="wrapper">
@@ -138,19 +146,19 @@ class App extends React.Component {
         <div className="wrapper">
           <div
             className="prevArrow"
-            onClick={this.handlePrev(this.actionMovieSection)}
+            onClick={this.handlePrev(this.horrorMovieSection)}
           >
             <img src={prevArrow} alt="" />
           </div>
           <div
             className="nextArrow"
-            onClick={this.handleNext(this.actionMovieSection)}
+            onClick={this.handleNext(this.horrorMovieSection)}
           >
             <img src={nextArrow} alt="" />
           </div>
-          <h1 className="section-title">Action Movies</h1>
-          <div ref={this.actionMovieSection} className="container-section">
-            <MovieItem movies={this.state.actionMovies} openContent={this.openContent} />
+          <h1 className="section-title">Horror / Thriller Movies</h1>
+          <div ref={this.horrorMovieSection} className="container-section">
+            <MovieItem movies={this.state.horrorMovies} openContent={this.openContent} />
           </div>
         </div>
       </div>
