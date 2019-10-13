@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/trailer-flix/static/css/main.5206982d.chunk.css",
+    "main.js": "/trailer-flix/static/js/main.22af39a5.chunk.js",
+    "main.js.map": "/trailer-flix/static/js/main.22af39a5.chunk.js.map",
+    "runtime-main.js": "/trailer-flix/static/js/runtime-main.b6f33b6a.js",
+    "runtime-main.js.map": "/trailer-flix/static/js/runtime-main.b6f33b6a.js.map",
+    "static/js/2.98a90f3f.chunk.js": "/trailer-flix/static/js/2.98a90f3f.chunk.js",
+    "static/js/2.98a90f3f.chunk.js.map": "/trailer-flix/static/js/2.98a90f3f.chunk.js.map",
+    "index.html": "/trailer-flix/index.html",
+    "precache-manifest.631bdacc694ac9749186d7a7203e0a0f.js": "/trailer-flix/precache-manifest.631bdacc694ac9749186d7a7203e0a0f.js",
+    "service-worker.js": "/trailer-flix/service-worker.js",
+    "static/css/main.5206982d.chunk.css.map": "/trailer-flix/static/css/main.5206982d.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b6f33b6a.js",
+    "static/js/2.98a90f3f.chunk.js",
+    "static/css/main.5206982d.chunk.css",
+    "static/js/main.22af39a5.chunk.js"
+  ]
+}
