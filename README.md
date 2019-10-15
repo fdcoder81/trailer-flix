@@ -6,6 +6,6 @@
 Trailer Flix App, mobile responsive, based on NetFlix design.
 It shows movies and Tv-series sort by categories on a responsive slider gallery.
 
-Fetching data using Axios from themoviedb.org.
+Fetching data from themoviedb.org.
 
 Live demo : https://fdcoder81.github.io/trailer-flix/
